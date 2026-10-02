@@ -246,7 +246,7 @@ const demoLogin = async (req, res) => {
 
     // Demo users use the selected role.
     // Officer gets the demo Industrial Compliance department.
-    const departmentId = role === "OFFICER" ? 8 : null;
+    const departmentId = role === "OFFICER" ? 1 : null;
 
     // Check whether demo email already exists
     const existingUser = await pool.query(
