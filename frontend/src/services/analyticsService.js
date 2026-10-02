@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API_URL = "const url = `${import.meta.env.VITE_API_URL}/api/auth/demo-login`;";
+const API_BASE_URL = `${import.meta.env.VITE_API_URL}/api/auth/demo-login`;;
 
 const getEntrepreneurAnalytics = async (token) => {
   const response = await axios.get(
