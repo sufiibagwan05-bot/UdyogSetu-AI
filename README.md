@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # UdyogSetu AI
 
 ## Intelligent Industrial Approval & Compliance Management Platform
@@ -45,3 +46,6 @@ UdyogSetu AI/
 ├── .gitignore
 ├── .env.example
 └── README.md
+=======
+# UdyogSetu-AI
+>>>>>>> b2512a9a551d56c6139bdd9d17ba53a967890613
