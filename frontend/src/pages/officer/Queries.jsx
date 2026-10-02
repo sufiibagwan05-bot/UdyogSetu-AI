@@ -20,13 +20,13 @@ const Queries = () => {
       setError("");
 
       const response = await axios.get(
-        "http://localhost:5000/api/officer/applications",
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        }
-      );
+  `${import.meta.env.VITE_API_URL}/api/officer/applications`,
+  {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  }
+);
 
       const underReviewApplications =
         (response.data.applications || []).filter(
@@ -73,16 +73,16 @@ const Queries = () => {
       setMessage("");
 
       const response = await axios.post(
-        `http://localhost:5000/api/queries/${selectedApplicationId}`,
-        {
-          queryText: queryText.trim(),
-        },
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        }
-      );
+  `\({import.meta.env.VITE_API_URL}/api/queries/\){selectedApplicationId}`,
+  {
+    queryText: queryText.trim(),
+  },
+  {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  }
+);
 
       setMessage(
         response.data.message ||

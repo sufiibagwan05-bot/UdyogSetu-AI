@@ -11,13 +11,13 @@ function Inspections() {
     const loadInspections = async () => {
       try {
         const response = await axios.get(
-          "http://localhost:5000/api/inspections",
-          {
-            headers: {
-              Authorization: `Bearer ${token}`,
-            },
-          }
-        );
+  `${import.meta.env.VITE_API_URL}/api/inspections`,
+  {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  }
+);
 
         setInspections(response.data.inspections || []);
       } catch (error) {

@@ -17,13 +17,13 @@ const Applications = () => {
       setError("");
 
       const response = await axios.get(
-        "http://localhost:5000/api/officer/applications",
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        }
-      );
+  `${import.meta.env.VITE_API_URL}/api/officer/applications`,
+  {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  }
+);
 
       setApplications(response.data.applications || []);
       setOfficer(response.data.officer || null);
@@ -44,14 +44,14 @@ const Applications = () => {
     setError("");
 
     await axios.post(
-      `http://localhost:5000/api/officer/applications/${applicationId}/assign`,
-      {},
-      {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      }
-    );
+  `\({import.meta.env.VITE_API_URL}/api/officer/applications/\){applicationId}/assign`,
+  {},
+  {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  }
+);
 
     await fetchApplications();
   } catch (error) {
@@ -69,16 +69,16 @@ const handleApprove = async (applicationId) => {
     setError("");
 
     await axios.put(
-      `http://localhost:5000/api/officer/applications/${applicationId}/review`,
-      {
-        decision: "APPROVED",
-      },
-      {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      }
-    );
+  `\({import.meta.env.VITE_API_URL}/api/officer/applications/\){applicationId}/review`,
+  {
+    decision: "APPROVED",
+  },
+  {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  }
+);
 
     await fetchApplications();
   } catch (error) {
@@ -104,17 +104,17 @@ const handleReject = async (applicationId) => {
     setError("");
 
     await axios.put(
-      `http://localhost:5000/api/officer/applications/${applicationId}/review`,
-      {
-        decision: "REJECTED",
-        rejectionReason: rejectionReason.trim(),
-      },
-      {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      }
-    );
+  `\({import.meta.env.VITE_API_URL}/api/officer/applications/\){applicationId}/review`,
+  {
+    decision: "REJECTED",
+    rejectionReason: rejectionReason.trim(),
+  },
+  {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  }
+);
 
     await fetchApplications();
   } catch (error) {

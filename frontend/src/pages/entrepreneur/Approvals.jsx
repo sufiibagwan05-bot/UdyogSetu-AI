@@ -23,13 +23,13 @@ const Approvals = () => {
       setError("");
 
       const response = await axios.get(
-        "http://localhost:5000/api/projects",
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        }
-      );
+  `${import.meta.env.VITE_API_URL}/api/projects`,
+  {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  }
+);
 
       setProjects(response.data.projects || []);
     } catch (error) {
@@ -57,14 +57,14 @@ const Approvals = () => {
       setApprovals([]);
 
       const response = await axios.post(
-        `http://localhost:5000/api/rules/evaluate/${selectedProjectId}`,
-        {},
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        }
-      );
+  `\({import.meta.env.VITE_API_URL}/api/rules/evaluate/\){selectedProjectId}`,
+  {},
+  {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  }
+);
 
       setProjectName(response.data.project?.name || "");
       setApprovals(response.data.applicableApprovals || []);

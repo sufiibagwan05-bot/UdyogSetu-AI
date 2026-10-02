@@ -33,13 +33,13 @@ const Documents = () => {
       setError("");
 
       const response = await axios.get(
-        "http://localhost:5000/api/projects",
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        }
-      );
+  `${import.meta.env.VITE_API_URL}/api/projects`,
+  {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  }
+);
 
       setProjects(response.data.projects || []);
     } catch (error) {
@@ -61,13 +61,13 @@ const Documents = () => {
       setSuccess("");
 
       const response = await axios.get(
-        `http://localhost:5000/api/documents/${projectId}`,
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        }
-      );
+  `\({import.meta.env.VITE_API_URL}/api/documents/\){projectId}`,
+  {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  }
+);
 
       setProjectName(
         response.data.project?.project_name || ""
@@ -108,14 +108,14 @@ for (const document of fetchedDocuments) {
 
     const fetchPrecheckResult = async (documentId) => {
     try {
-      const response = await axios.get(
-        `http://localhost:5000/api/document-prechecks/${documentId}`,
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        }
-      );
+     const response = await axios.get(
+  `\({import.meta.env.VITE_API_URL}/api/document-prechecks/\){documentId}`,
+  {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  }
+);
 
       setPrecheckResults((previous) => ({
         ...previous,
@@ -174,14 +174,14 @@ for (const document of fetchedDocuments) {
       formData.append("document", selectedFile);
 
       const response = await axios.post(
-        `http://localhost:5000/api/documents/${selectedProjectId}/upload`,
-        formData,
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        }
-      );
+  `\({import.meta.env.VITE_API_URL}/api/documents/\){selectedProjectId}/upload`,
+  formData,
+  {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  }
+);
 
       setSuccess(
         response.data.message ||
@@ -219,14 +219,14 @@ for (const document of fetchedDocuments) {
     setSuccess("");
 
     const response = await axios.post(
-      `http://localhost:5000/api/document-prechecks/${documentId}`,
-      {},
-      {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      }
-    );
+  `\({import.meta.env.VITE_API_URL}/api/document-prechecks/\){documentId}`,
+  {},
+  {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  }
+);
 
     await fetchDocuments(selectedProjectId);
 

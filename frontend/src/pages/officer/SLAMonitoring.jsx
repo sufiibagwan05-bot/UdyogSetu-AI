@@ -12,13 +12,13 @@ function SLAMonitoring() {
     const loadSLAData = async () => {
       try {
         const applicationsResponse = await axios.get(
-          "http://localhost:5000/api/officer/applications",
-          {
-            headers: {
-              Authorization: `Bearer ${token}`,
-            },
-          }
-        );
+  `${import.meta.env.VITE_API_URL}/api/officer/applications`,
+  {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  }
+);
 
         const apps =
           applicationsResponse.data.applications || [];
@@ -30,13 +30,13 @@ function SLAMonitoring() {
         for (const application of apps) {
           try {
             const slaResponse = await axios.get(
-              `http://localhost:5000/api/sla/${application.id}`,
-              {
-                headers: {
-                  Authorization: `Bearer ${token}`,
-                },
-              }
-            );
+  `\({import.meta.env.VITE_API_URL}/api/sla/\){application.id}`,
+  {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  }
+);
 
             if (slaResponse.data.sla) {
               records.push({

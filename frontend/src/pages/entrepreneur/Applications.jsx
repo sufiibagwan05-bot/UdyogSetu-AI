@@ -19,7 +19,7 @@ const Applications = () => {
       setError("");
 
       const response = await axios.get(
-        "http://localhost:5000/api/projects",
+        "http://`${import.meta.env.VITE_API_URL}/api`/api/projects",
         {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -54,13 +54,13 @@ const Applications = () => {
       setError("");
 
       const response = await axios.get(
-        `http://localhost:5000/api/parallel-workflow/${projectId}`,
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        }
-      );
+  `\({import.meta.env.VITE_API_URL}/api/parallel-workflow/\){projectId}`,
+  {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  }
+);
 
       setApprovals(response.data.approvals || []);
     } catch (error) {
@@ -94,16 +94,16 @@ const Applications = () => {
     setError("");
 
     await axios.post(
-      "http://localhost:5000/api/applications",
-      {
-        projectApprovalId,
-      },
-      {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      }
-    );
+  `${import.meta.env.VITE_API_URL}/api/applications`,
+  {
+    projectApprovalId,
+  },
+  {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  }
+);
 
     await fetchApprovals(selectedProjectId);
   } catch (error) {
@@ -126,14 +126,14 @@ const handleSubmitApplication = async (
     setError("");
 
     await axios.post(
-      `http://localhost:5000/api/applications/${applicationId}/submit`,
-      {},
-      {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      }
-    );
+  `\({import.meta.env.VITE_API_URL}/api/applications/\){applicationId}/submit`,
+  {},
+  {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  }
+);
 
     await fetchApprovals(selectedProjectId);
   } catch (error) {

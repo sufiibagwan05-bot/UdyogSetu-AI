@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 
-const API = "http://localhost:5000/api/admin";
+const API = `${import.meta.env.VITE_API_URL}/api/admin`;;
 
 const RegulatoryManagement = () => {
   const token = localStorage.getItem("udyogsetu_token");
