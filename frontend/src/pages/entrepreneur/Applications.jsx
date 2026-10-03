@@ -120,34 +120,34 @@ const Applications = () => {
 };
 
 const handleSubmitApplication = async (
-  applicationId
-) => {
-  try {
-    setError("");
+    applicationId
+  ) => {
+    try {
+      setError("");
 
-    await axios.post(
-      `\({import.meta.env.VITE_API_URL}/api/applications/\){applicationId}/submit`,
-      {},
-      {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      }
-    );
+      await axios.post(
+        `\({import.meta.env.VITE_API_URL}/api/applications/\){applicationId}/submit`,
+        {},
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
 
-    await fetchApprovals(selectedProjectId);
-  } catch (error) {
-    console.error(
-      "SUBMIT APPLICATION ERROR:",
-      error
-    );
+      await fetchApprovals(selectedProjectId);
+    } catch (error) {
+      console.error(
+        "SUBMIT APPLICATION ERROR:",
+        error
+      );
 
-    setError(
-      error.response?.data?.message ||
-        "Failed to submit application."
-    );
-  }
-};
+      setError(
+        error.response?.data?.message ||
+          "Failed to submit application."
+      );
+    }
+  };
 
   return (
     <div className="project-page">
