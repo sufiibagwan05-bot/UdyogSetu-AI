@@ -11,7 +11,7 @@ function Inspections() {
     const loadInspections = async () => {
       try {
         const response = await axios.get(
-  `${import.meta.env.VITE_API_URL}/api/inspections`,
+  `${import.meta.env.VITE_API_URL}/api/officer/inspections`,
   {
     headers: {
       Authorization: `Bearer ${token}`,
