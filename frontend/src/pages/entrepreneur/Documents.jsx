@@ -174,14 +174,14 @@ for (const document of fetchedDocuments) {
       formData.append("document", selectedFile);
 
       const response = await axios.post(
-  `\({import.meta.env.VITE_API_URL}/api/documents/\){selectedProjectId}/upload`,
-  formData,
-  {
-    headers: {
-      Authorization: `Bearer ${token}`,
-    },
-  }
-);
+        `\({import.meta.env.VITE_API_URL}/api/documents/\){selectedProjectId}/upload`,
+        formData,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
 
       setSuccess(
         response.data.message ||
