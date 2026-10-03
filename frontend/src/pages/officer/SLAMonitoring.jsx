@@ -30,13 +30,13 @@ function SLAMonitoring() {
         for (const application of apps) {
           try {
             const slaResponse = await axios.get(
-              `\({import.meta.env.VITE_API_URL}/api/sla/\){application.id}`,
-              {
-                headers: {
-                  Authorization: `Bearer ${token}`,
-                },
-              }
-            );
+  `\({import.meta.env.VITE_API_URL}/api/sla/\){application.id}`,
+  {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  }
+);
 
             if (slaResponse.data.sla) {
               records.push({
