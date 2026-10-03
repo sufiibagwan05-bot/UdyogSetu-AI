@@ -218,21 +218,20 @@ for (const document of fetchedDocuments) {
     setError("");
     setSuccess("");
 
-   const response = await axios.post(
-  `${import.meta.env.VITE_API_URL}/api/documents`, // ya jo bhi tera upload endpoint ho
-  formData,
-  {
-    headers: {
-      "Content-Type": "multipart/form-data",
-      Authorization: `Bearer ${token}`,
-    },
-  }
-);
+    const response = await axios.post(
+      `\({import.meta.env.VITE_API_URL}/api/document-prechecks/\){documentId}`,
+      {},
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    );
 
     await fetchDocuments(selectedProjectId);
 
     setSuccess(
-      `Pre-check completed: ${response.data.precheck.overall_status}`
+      `Pre-check completed: ${response.data.precheck?.overall_status || "Success"}`
     );
   } catch (error) {
     console.error("PRECHECK ERROR:", error);
