@@ -56,15 +56,14 @@ const Approvals = () => {
       setSuccess("");
       setApprovals([]);
 
-      const response = await axios.post(
-  `\({import.meta.env.VITE_API_URL}/api/rules/evaluate/\){selectedProjectId}`,
-  {},
-  {
-    headers: {
-      Authorization: `Bearer ${token}`,
-    },
-  }
-);
+      const response = await axios.get(
+        `\({import.meta.env.VITE_API_URL}/api/rules/evaluate/\){selectedProjectId}`,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
 
       setProjectName(response.data.project?.name || "");
       setApprovals(response.data.applicableApprovals || []);
