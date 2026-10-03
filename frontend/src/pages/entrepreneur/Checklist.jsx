@@ -25,7 +25,7 @@ const Checklist = () => {
       setError("");
 
       const response = await axios.get(
-        "http://`${import.meta.env.VITE_API_URL}/api`/api/projects",
+        `${import.meta.env.VITE_API_URL}/api/projects`,
         {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -59,13 +59,13 @@ const Checklist = () => {
       setChecklist([]);
 
       const response = await axios.get(
-  `\({import.meta.env.VITE_API_URL}/api/checklist/\){selectedProjectId}`,
-  {
-    headers: {
-      Authorization: `Bearer ${token}`,
-    },
-  }
-);
+        `\({import.meta.env.VITE_API_URL}/api/checklist/\){selectedProjectId}`,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
 
       setProjectName(response.data.project?.project_name || "");
       setChecklist(response.data.checklist || []);

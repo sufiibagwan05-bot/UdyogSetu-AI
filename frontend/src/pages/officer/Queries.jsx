@@ -73,16 +73,16 @@ const Queries = () => {
       setMessage("");
 
       const response = await axios.post(
-  `\({import.meta.env.VITE_API_URL}/api/queries/\){selectedApplicationId}`,
-  {
-    queryText: queryText.trim(),
-  },
-  {
-    headers: {
-      Authorization: `Bearer ${token}`,
-    },
-  }
-);
+        `\({import.meta.env.VITE_API_URL}/api/queries/\){selectedApplicationId}`,
+        {
+          queryText: queryText.trim(),
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
 
       setMessage(
         response.data.message ||
